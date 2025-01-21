@@ -1,0 +1,69 @@
+<header class="p-3 text-bg-dark" style="font-size: 1.2rem;">
+  <!-- Navbar pour les utilisateurs non connectés -->
+  <div class="container" *ngIf="!isAdminLoggedIn() && !isCustomerLoggedIn()">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <!-- Titre "AUTO MERO" à gauche -->
+      <div class="d-flex align-items-center">
+        <a routerLink="/agency" class="text-white text-decoration-none" style="font-size: 1.5rem; font-weight: bold;">AUTO MERO</a>
+      </div>
+
+      <!-- Barre de recherche au centre -->
+      <form class="mx-4 flex-grow-1" role="search">
+        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" style="font-size: 1.2rem;">
+      </form>
+
+      <!-- Boutons de connexion et d'inscription à droite -->
+      <div class="text-end">
+        <button type="button" class="btn btn-outline-light me-2" routerLink="/login" routerLinkActive="active" style="font-size: 1.2rem;">Login</button>
+        <button type="button" class="btn btn-warning" routerLink="/register" routerLinkActive="active" style="font-size: 1.2rem;">Sign-up</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar pour l'administrateur connecté -->
+  <div class="container" *ngIf="isAdminLoggedIn()">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <!-- Titre "LoggedIn Admin" à gauche -->
+      <div class="d-flex align-items-center">
+        <a routerLink="" class="text-white text-decoration-none" style="font-size: 1.5rem; font-weight: bold;">LoggedIn Admin</a>
+      </div>
+
+      <!-- Barre de recherche au centre -->
+      <form class="mx-4 flex-grow-1" role="search">
+        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" style="font-size: 1.2rem;">
+      </form>
+
+      <!-- Boutons pour l'administrateur -->
+      <div class="text-end">
+        <button type="button" class="btn btn-outline-light me-2" routerLink="/admin/dashboard" routerLinkActive="active" style="font-size: 1.2rem;">Dashboard</button>
+        <button type="button" class="btn btn-outline-light me-2" routerLink="/admin/car" routerLinkActive="active" style="font-size: 1.2rem;">Post Car</button>
+        <button type="button" class="btn btn-outline-light me-2" routerLink="/admin/bookings" routerLinkActive="active" style="font-size: 1.2rem;">Bookings</button>
+        <button type="button" class="btn btn-outline-light me-2" routerLink="/admin/search" routerLinkActive="active" style="font-size: 1.2rem;">Search</button>
+        <button type="button" class="btn btn-warning" (click)="logout()" style="font-size: 1.2rem;">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar pour le client connecté -->
+  <div class="container" *ngIf="isCustomerLoggedIn()">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <!-- Titre "LoggedIn Customer" à gauche -->
+      <div class="d-flex align-items-center">
+        <a routerLink="" class="text-white text-decoration-none" style="font-size: 1.5rem; font-weight: bold;">LoggedIn Customer</a>
+      </div>
+
+      <!-- Barre de recherche au centre -->
+      <form class="mx-4 flex-grow-1" role="search">
+        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" style="font-size: 1.2rem;">
+      </form>
+
+      <!-- Boutons pour le client -->
+      <div class="text-end">
+        <button type="button" class="btn btn-outline-light me-2" routerLink="/customer/dashboard" routerLinkActive="active" style="font-size: 1.2rem;">Dashboard</button>
+        <button type="button" class="btn btn-outline-light me-2" routerLink="/customer/my_bookings" routerLinkActive="active" style="font-size: 1.2rem;">My Bookings</button>
+        <button type="button" class="btn btn-outline-light me-2" routerLink="/customer/car/searchcar" routerLinkActive="active" style="font-size: 1.2rem;">Search Car</button>
+        <button type="button" class="btn btn-warning" (click)="logout()" style="font-size: 1.2rem;">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>

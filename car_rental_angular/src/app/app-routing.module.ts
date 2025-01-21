@@ -6,13 +6,16 @@ import { SignupComponent } from './auth/components/signup/signup.component';
 import { AgencyComponent } from './agency/agency.component';
 
 const routes: Routes = [
-
+  {
+    path: '', // Route par défaut
+    redirectTo: 'agency', // Redirige vers la page agency
+    pathMatch: 'full', // Correspondance exacte
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignupComponent },
   { path: 'agency', component: AgencyComponent },
-  { path: "admin", loadChildren: () => import("./modules/admin/admin.module").then(m => m.AdminModule)},
-  { path: "customer", loadChildren: () => import("./modules/customer/customer.module").then(m => m.CustomerModule)},
-
+  { path: "admin", loadChildren: () => import("./modules/admin/admin.module").then(m => m.AdminModule) },
+  { path: "customer", loadChildren: () => import("./modules/customer/customer.module").then(m => m.CustomerModule) },
 ];
 
 @NgModule({

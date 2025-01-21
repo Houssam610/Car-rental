@@ -1,44 +1,77 @@
+/* Navbar */
 .main-header {
-    background-color: #001529;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 21, 41, 0.9);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.navbar-title a {
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-title a {
     color: #fff;
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-
+  
     &:hover {
-        color: #1890ff;
+      color: #1890ff;
     }
-}
-
-.nav-links a {
+  }
+  
+  .nav-links a {
     color: #fff;
     margin-left: 5%;
-
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+  
     &[nzType="primary"] {
-        background-color: #1890ff;
-        border-color: #1890ff;
-
-        &:hover {
-            background-color: #40a9ff;
-            border-color: #40a9ff;
-        }
+      background-color: #1890ff;
+      border-color: #1890ff;
+      padding: 8px 16px;
+      border-radius: 4px;
+  
+      &:hover {
+        background-color: #40a9ff;
+        border-color: #40a9ff;
+      }
     }
-
+  
     &[nzType="default"] {
-        background-color: #fff;
-        color: #001529;
-        border-color: #fff;
-
-        &:hover {
-            background-color: #f0f0f0;
-            color: #1890ff;
-        }
+      background-color: #fff;
+      color: #001529;
+      border-color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+  
+      &:hover {
+        background-color: #f0f0f0;
+        color: #1890ff;
+      }
     }
-}
+  }
+  
+  /* Conteneur Parent */
+  .agency-container {
+    background: url('/assets/Images/ffff.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-top: 70px; /* Marge en haut pour la navbar */
+  }
+  
+  /* Overlay */
+  .overlay {
+    position: absolute;
+    top: 70px; /* Commencer après la navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 70px); /* Ajuster la hauteur */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }

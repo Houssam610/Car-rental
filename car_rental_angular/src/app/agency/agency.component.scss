@@ -1,80 +1,56 @@
-/* Animations */
-@keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* Conteneur Parent avec Image d'Arrière-Plan */
+.agency-container {
+  background: url('/assets/Images/ffff.jpg') no-repeat center center/cover;
+  background-attachment: fixed; /* Pour un effet de défilement parallaxe */
+  min-height: 100vh; /* Couvre toute la hauteur de la page */
+  padding-top: 70px; /* Marge en haut pour la navbar */
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 70px; /* Commencer après la navbar */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 70px); /* Ajuster la hauteur pour exclure la navbar */
+  background: rgba(0, 0, 0, 0.5); /* Overlay sombre pour améliorer la lisibilité */
+  z-index: 1;
+}
+
+/* Section Hero */
+.hero-section {
+  padding: 150px 0;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    position: relative;
+    z-index: 2; /* S'assurer que le contenu est au-dessus de l'overlay */
   }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(50px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
+    animation-delay: 0.5s; /* Délai de 0.5 seconde */
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-in-out;
+    animation-delay: 1s; /* Délai de 1 seconde */
   }
-  
-  /* Section Hero avec image en arrière-plan */
-  .hero-section {
-    background: url('/assets/Images/hero-bg.jpg') no-repeat center center/cover;
-    padding: 150px 0;
+
+  .btn-animated {
     position: relative;
     overflow: hidden;
-  
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* Overlay sombre pour améliorer la lisibilité */
-    }
-  
-    .container {
-      position: relative;
-      z-index: 1;
-    }
-  
-    h1 {
-      font-size: 3.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      animation: fadeInDown 1s ease-in-out;
-      animation-delay: 0.5s; /* Délai de 0.5 seconde */
-    }
-  
-    p {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-      animation: fadeInUp 1s ease-in-out;
-      animation-delay: 1s; /* Délai de 1 seconde */
-    }
-  
-    .btn-animated {
-      position: relative;
-      overflow: hidden;
-      transition: background-color 0.3s ease;
-      animation: fadeIn 1.5s ease-in-out;
-      animation-delay: 1.5s; /* Délai de 1.5 seconde */
-    }
-  
-    .btn-animated::after {
+    transition: background-color 0.3s ease;
+    animation: fadeIn 1.5s ease-in-out;
+    animation-delay: 1.5s; /* Délai de 1.5 seconde */
+
+    &::after {
       content: '';
       position: absolute;
       top: 50%;
@@ -86,169 +62,193 @@
       transition: all 0.5s ease;
       z-index: 0;
     }
-  
-    .btn-animated:hover::after {
+
+    &:hover::after {
       width: 0;
       height: 0;
     }
-  
-    .btn-animated span {
+
+    span {
       position: relative;
       z-index: 1;
     }
   }
-  
-  /* Section À propos de nous avec image en arrière-plan couvrant toute la page */
-  .about-section {
+}
+
+/* Section À propos de nous */
+.about-section {
+  padding: 100px 0;
+  min-height: 100vh; /* Hauteur minimale = 100% de la hauteur de la vue */
+  display: flex;
+  align-items: center; /* Centrer verticalement le contenu */
+  justify-content: center; /* Centrer horizontalement le contenu */
+  overflow: hidden;
+
+  .container {
     position: relative;
-    background: url('/assets/Images/agency.jpg') no-repeat center center/cover;
-    padding: 100px 0;
-    min-height: 100vh; /* Hauteur minimale = 100% de la hauteur de la vue */
-    display: flex;
-    align-items: center; /* Centrer verticalement le contenu */
-    justify-content: center; /* Centrer horizontalement le contenu */
-    overflow: hidden;
-  
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* Overlay sombre pour améliorer la lisibilité */
-    }
-  
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 100%; /* Assure que le conteneur prend toute la largeur */
-    }
-  
-    h2 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 30px;
-      color: white;
+    z-index: 2; /* S'assurer que le contenu est au-dessus de l'overlay */
+    width: 100%; /* Assure que le conteneur prend toute la largeur */
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: white;
+    text-align: center;
+    animation: fadeInDown 1s ease-in-out;
+  }
+
+  .description-box {
+    background: rgba(255, 255, 255, 0.9); /* Fond blanc légèrement transparent */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto; /* Centrer le cadre horizontalement */
+    animation: fadeInUp 1s ease-in-out;
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #333;
       text-align: center;
-      animation: fadeInDown 1s ease-in-out;
-    }
-  
-    .description-box {
-      background: rgba(255, 255, 255, 0.9); /* Fond blanc légèrement transparent */
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      max-width: 800px;
-      margin: 0 auto; /* Centrer le cadre horizontalement */
-      animation: fadeInUp 1s ease-in-out;
-  
-      p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: #333;
-        text-align: center;
-        margin-bottom: 0;
-      }
+      margin-bottom: 0;
     }
   }
-  
-  /* Section Services */
-  .services-section {
-    background-color: #f8f9fa;
-    padding: 100px 0;
-  
-    h2 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 30px;
-      text-align: center;
+}
+
+/* Section Services */
+.services-section {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    position: relative;
+    z-index: 2; /* S'assurer que le contenu est au-dessus de l'overlay */
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: white;
+  }
+
+  .service-item {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    text-align: center;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
-  
-    .service-item {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      padding: 20px;
-      text-align: center;
-  
-      &:hover {
-        transform: translateY(-10px);
-      }
-  
-      i {
-        font-size: 3rem;
-        color: #007bff;
-        margin-bottom: 15px;
-      }
-  
-      h4 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-      }
-  
-      p {
-        font-size: 1rem;
-        color: #666;
-      }
+
+    i {
+      font-size: 3rem;
+      color: #007bff;
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #666;
+      transition: color 0.3s ease;
+    }
+
+    &:hover i,
+    &:hover h4,
+    &:hover p {
+      color: #0056b3; /* Changement de couleur au survol */
     }
   }
-  
-  /* Section Contact */
-  .contact-section {
-    background-color: #fff;
-    padding: 100px 0;
-  
-    h2 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 30px;
-      text-align: center;
+}
+
+/* Section Contact */
+.contact-section {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+
+  .container {
+    position: relative;
+    z-index: 2; /* S'assurer que le contenu est au-dessus de l'overlay */
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+    color: white;
+  }
+
+  .contact-info-box {
+    background-color: rgba(255, 255, 255, 0.9); /* Arrière-plan semi-transparent */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    p {
+      color: #333; /* Couleur de texte sombre */
+      font-size: 1.1rem;
+      margin-bottom: 20px;
     }
-  
+
     ul {
       list-style: none;
       padding-left: 0;
-  
+
       li {
+        color: #333; /* Couleur de texte sombre */
         margin-bottom: 10px;
         font-size: 1.1rem;
-  
+
         i {
           margin-right: 10px;
-          color: #007bff;
+          color: #007bff; /* Couleur des icônes */
         }
       }
     }
-  
+  }
+
+  form {
+    background-color: rgba(255, 255, 255, 0.9); /* Arrière-plan semi-transparent */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .form-control {
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+
     .btn-animated {
-      position: relative;
-      overflow: hidden;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
       transition: background-color 0.3s ease;
-      animation: fadeIn 1.5s ease-in-out;
-      animation-delay: 1.5s; /* Délai de 1.5 seconde */
-    }
-  
-    .btn-animated::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300%;
-      height: 300%;
-      background: rgba(255, 255, 255, 0.3);
-      transform: translate(-50%, -50%) rotate(45deg);
-      transition: all 0.5s ease;
-      z-index: 0;
-    }
-  
-    .btn-animated:hover::after {
-      width: 0;
-      height: 0;
-    }
-  
-    .btn-animated span {
-      position: relative;
-      z-index: 1;
+
+      &:hover {
+        background-color: #0056b3;
+      }
     }
   }
+}
